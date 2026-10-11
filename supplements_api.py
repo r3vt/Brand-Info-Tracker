@@ -4,7 +4,6 @@ import requests
 import urllib3
 import threading
 
-# إخفاء تحذيرات الأمان
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 def fetch_data():
@@ -26,7 +25,7 @@ def fetch_data():
         if response.status_code == 200:
             data = response.json()
             if data.get('count', 0) > 0:
-                # جلب أول 3 منتجات تابعة للشركة أو البراند
+    
                 products = data['products'][:3] 
                 
                 info_text = f"--- Top Results for '{search_term}' ---\n\n"
@@ -52,10 +51,6 @@ def fetch_data():
 
 def start_search_thread():
     threading.Thread(target=fetch_data, daemon=True).start()
-
-# ==========================================
-# تصميم الواجهة (بدون صور، لركز على البيانات)
-# ==========================================
 
 root = tk.Tk()
 root.title("Brand Info Tracker")
